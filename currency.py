@@ -2,7 +2,8 @@ import re
 
 # Currency has a single digit symbol (code) and a value
 # __init__, __add__, __subtract__, __multiply__
-# raises DifferentCurrencyCodeError when different currencies are added or subtracted
+# raises DifferentCurrencyCodeError when different currencies
+# are added or subtracted
 # Currency() takes one argument, and can find the currency symbol in that argument,
 # or take a symbol and a value
 
@@ -26,7 +27,7 @@ class Currency:
 
     # str method
     def __str__(self):
-        return "{s}{v:.2f}".format(s = self.symbol, v = self.val)
+        return "{v:.2f}, {c}".format(v=self.val, c=self.code)
 
     # equals method
     def __eq__(self, other):

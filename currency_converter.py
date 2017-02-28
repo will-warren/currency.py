@@ -21,24 +21,27 @@ class UnknownCurrencyCodeError(ValueError):
 
 class CurrencyConverter:
 
-    def __init__(self, curr_dict):
-        self.curr_dict = curr_dict
-        for key, value in self.curr_dict:
-            self.code = curr_dict[key]
-            self.rate = curr_dict[value]
-        self.new_amount = 0
+    def __init__(self, rate_dict):
+        self.rate_dict = rate_dict
 
-    def convert(self, currency_obj, currency_to_be_converted):
-            if currency_to_be_converted not in self.curr_dict:
-                raise UnknownCurrencyCodeError
+    def __str__(self):
+        return "We will convert any currency that we know"
+    def __eq__(self, other):
+        return self.rate_dict == self.rate_dict
+
+    def convert(self, currency_obj, curr_code):
+        if curr_code not in self.rate_dict.keys():
+            raise UnknownCurrencyCodeError
+        else:
+            if currency_obj.code == curr_code:
+                return currency_obj
             else:
-                if currency_obj.code == key:
-                    return currency_obj
-                else:
-                    self.new_amount = round(currency_obj.val, 2) * value
-        return Currency(self.new_amount, currency_to_be_converted)
+                return Currency(currency_obj.val * self.rate_dict[curr_code], curr_code)
 
 
 c = Currency("500", "USD")
-print(CurrencyConverter(sample_dict))
-print(CurrencyConverter.convert(c, "GBP"))
+d = CurrencyConverter(sample_dict)
+print(c)
+print(d.convert(c, "USD"))
+print(d.convert(c, "EUR"))
+print(d)
