@@ -25,7 +25,6 @@ class Currency:
         self.val = float(self.val)
         self.code = code.upper()
 
-
     # str method
     def __str__(self):
         return "{v:.2f}, {c}".format(v=self.val, c=self.code)
@@ -38,7 +37,7 @@ class Currency:
     def __add__(self, b):
         if isinstance(b, Currency) and self.symbol == b.symbol:
             self.val += b.val
-            return "{s}{v:.2f}".format(s = self.symbol, v = self.val)
+            return "{s}{v:.2f}".format(s=self.symbol, v=self.val)
         else:
             raise InvalidInputError
 
@@ -49,7 +48,7 @@ class Currency:
         if isinstance(b, Currency):
             if self.val > b.val:
                 self.val -= b.val
-                return "{s}{v:.2f}".format(s = self.symbol, v = self.val)
+                return "{s}{v:.2f}".format(s=self.symbol, v=self.val)
             else:
                 raise InvalidInputError
         else:
@@ -59,6 +58,6 @@ class Currency:
     def multiply(self, num):
         if type(num) == int or type(num) == float:
             self.val *= num
-            return "{s}{v:.2f}".format(s = self.symbol,  v =self.val)
+            return "{s}{v:.2f}".format(s=self.symbol,  v=self.val)
         else:
             raise TypeError
