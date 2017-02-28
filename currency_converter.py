@@ -26,6 +26,7 @@ class CurrencyConverter:
 
     def __str__(self):
         return "We will convert any currency that we know"
+
     def __eq__(self, other):
         return self.rate_dict == self.rate_dict
 
@@ -49,6 +50,6 @@ print(d.convert(c, "USD"))
 print(d.convert(c, "EUR"))
 print(d.convert(c, "GBP"))
 print(d.convert(e, "JPY"))
-print(d.convert(f, "USD"))
+print(d.convert(f, "USD")) # doesn't convert back to USD correctly.
 print(d.convert(g, "KRW"))
 print(d)
