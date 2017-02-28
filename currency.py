@@ -21,7 +21,8 @@ class Currency:
     # value is a monetary amount, e.g. Currency($, 2.75)
     def __init__(self, amount, code=""):
         self.symbol = re.sub(r'[^$£¥€₩]', '', amount)
-        self.val = float(re.sub(r'[^0-9.]', '', amount))
+        self.val = re.sub(r'[^0-9.]', '', amount)
+        self.val = float(self.val)
         self.code = code.upper()
 
 

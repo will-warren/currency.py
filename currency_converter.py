@@ -13,7 +13,7 @@ from currency import Currency
 # raises UnknownCurrencyCodeError if there is an unknown curr
 
 # codes_dict = {'$': "USD", "£":'GBP', "¥":'JPY', "€":"EUR", "₩":"KRW"}
-sample_dict = {'USD': 1.0, 'EUR': 0.74}
+sample_dict = {'USD': 1.0, 'EUR': 0.74, 'JPY': 120, "KRW":1132, "GBP": 0.80}
 
 class UnknownCurrencyCodeError(ValueError):
     pass
@@ -36,12 +36,19 @@ class CurrencyConverter:
             if currency_obj.code == curr_code:
                 return currency_obj
             else:
-                return Currency(currency_obj.val * self.rate_dict[curr_code], curr_code)
+                return Currency(str(currency_obj.val * self.rate_dict[curr_code]), curr_code)
 
 
 c = Currency("500", "USD")
 d = CurrencyConverter(sample_dict)
+e = Currency("7", "GBP")
+f = Currency("10", "KRW")
+g = Currency("2100", "JPY")
 print(c)
 print(d.convert(c, "USD"))
 print(d.convert(c, "EUR"))
+print(d.convert(c, "GBP"))
+print(d.convert(e, "JPY"))
+print(d.convert(f, "USD"))
+print(d.convert(g, "KRW"))
 print(d)
