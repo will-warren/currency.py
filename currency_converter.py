@@ -28,7 +28,7 @@ class CurrencyConverter:
         return "We will convert any currency that we know"
 
     def __eq__(self, other):
-        return self.rate_dict == self.rate_dict
+        return self.rate_dict == other.rate_dict
 
     def convert(self, currency_obj, curr_code):
         if curr_code not in self.rate_dict.keys():
@@ -38,6 +38,6 @@ class CurrencyConverter:
                 return currency_obj
             else:
                 if not self.rate_dict[curr_code] < 1:
-                    return Currency(str(currency_obj.val * self.rate_dict[curr_code]), curr_code)
+                    return currency.Currency(str(currency_obj.val * self.rate_dict[curr_code]), curr_code)
                 else:
-                    return Currency(str(currency_obj.val /  self.rate_dict[curr_code]), curr_code)
+                    return currency.Currency(str(currency_obj.val /  self.rate_dict[curr_code]), curr_code)

@@ -14,31 +14,32 @@ class TestCurrencyConverter(unittest.TestCase):
         self.currency_b = currency.Currency(7, "GBP")
         self.currency_c = currency.Currency(10, "KRW")
         self.currency_d = currency.Currency(2100, "JPY")
-        self.curr_conveter = CurrencyConverter({'USD': 1.0,
+        self.curr_converter = CurrencyConverter({'USD': 1.0,
         'EUR': 0.74, 'JPY': 120, "KRW":1132, "GBP": 0.80})
+        self.other_curr_converter = CurrencyConverter({"USD": 1.0, "EUR": 0.74})
 
     # test string method
     def test_currency_converter_str(self):
-        self.assertEqual(self.curr_conveter.__str__(), "We will convert any currency that we know")
+        self.assertEqual(self.curr_converter.__str__(), "We will convert any currency that we know")
 
     def test_currency_converter_eq(self):
-        self.assertTrue(self.curr_converter.__eq__(curr_converter))
+        self.assertTrue(self.curr_converter.__eq__(self.curr_converter))
 
     def test_currency_converter_not_eq(self):
-        self.assertFalse(self.curr_converter.__eq__(curr_converter))
+        self.assertFalse(self.curr_converter.__eq__(self.other_curr_converter))
 
     def test_currency_converter_convert_same_code(self):
-        self.assertEqual(self.curr_converter.convert(currency_a, "USD"))
+        self.assertEqual(self.curr_converter.convert(self.currency_a, "USD"), self.currency_a)
 
     def test_currency_converter_convert_rate_grtr_thn_1(self):
-        self.assertEqual(self.curr_converter.convert(currency_d, "KRW"))
+        self.assertEqual(self.curr_converter.convert(self.currency_d, "KRW"), 2377200)
 
     def test_currency_converter_convert_rate_lss_thn_1(self):
-        self.assertEqual(self.curr_converter.convert(currency_c, "EUR"))
+        self.assertEqual(self.curr_converter.convert(self.currency_c, "EUR"), 13.51)
 
     def test_currency_converter_unknown_currency_error(self):
         with self.assertRaises(UnknownCurrencyCodeError):
-            self.curr_converter(currency_b, "AUD")
+            self.curr_converter.convert(self.currency_b, "AUD")
 
 
 if __name__ == '__main__':

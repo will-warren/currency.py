@@ -20,10 +20,16 @@ class Currency:
     # amount is the monetary amount passed in, e.g $2.50
     # value is a monetary amount, e.g. Currency($, 2.75)
     def __init__(self, amount, code=""):
-        self.symbol = re.sub(r'[^$£¥€₩]', '', amount)
-        self.val = re.sub(r'[^0-9.]', '', amount)
-        self.val = float(self.val)
-        self.code = code.upper()
+        symbol_dict ={"USD":'$', "EUR":"€", "GBP":"£", "JPY":"¥", "KRW":"₩"}
+        if type(amount) == int or type(amount) == float:
+            self.val = amount
+            self.code = code
+            self.symbol = symbol_dict[self.code]
+        else:
+            self.symbol = re.sub(r'[^$£¥€₩]', '', amount)
+            self.val = re.sub(r'[^0-9.]', '', amount)
+            self.val = float(self.val)
+            self.code = code.upper()
 
     # str method
     def __str__(self):
