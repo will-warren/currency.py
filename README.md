@@ -14,4 +14,7 @@ Files:
 5. currency_converter_test.py run via terminal/shell "python 3 currency_converter.py"
     - the test of the converter object and its Exception declarations
 
-All tests passing except for two in currency_converter_test, issue finding symbols when none given
+All tests passing except for one in currency_converter_test,
+
+getting correct output but different memory addresses, trying to test convert function
+with a divisor less than one. 
