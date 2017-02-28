@@ -12,8 +12,6 @@ from currency import Currency
 # must be able to convert curr to any other curr
 # raises UnknownCurrencyCodeError if there is an unknown curr
 
-# codes_dict = {'$': "USD", "£":'GBP', "¥":'JPY', "€":"EUR", "₩":"KRW"}
-sample_dict = {'USD': 1.0, 'EUR': 0.74, 'JPY': 120, "KRW":1132, "GBP": 0.80}
 
 class UnknownCurrencyCodeError(ValueError):
     pass

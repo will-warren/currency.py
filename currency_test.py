@@ -45,6 +45,5 @@ class TestCurrencyCode(unittest.TestCase):
             self.test_a.multiply(self.test_d)
 
 
-    #
 if __name__ == '__main__':
     unittest.main()
