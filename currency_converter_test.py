@@ -35,7 +35,7 @@ class TestCurrencyConverter(unittest.TestCase):
         self.assertEqual(self.curr_converter.convert(self.currency_d, "KRW"), currency.Currency(2377200.00, "KRW"))
 
     def test_currency_converter_convert_rate_lss_thn_1(self):
-        self.assertEqual(self.curr_converter.convert(self.currency_c, "EUR"), currency.Currency(13.52, "EUR"))
+        self.assertEqual(self.curr_converter.convert(self.currency_c, "EUR"), currency.Currency(13.51, "EUR"))
 
     def test_currency_converter_unknown_currency_error(self):
         with self.assertRaises(UnknownCurrencyCodeError):
