@@ -23,7 +23,7 @@ class Currency:
         symbol_dict ={"USD":'$', "EUR":"€", "GBP":"£", "JPY":"¥", "KRW":"₩"}
         if type(amount) == int or type(amount) == float:
             self.val = amount
-            self.code = code
+            self.code = code.upper()
             self.symbol = symbol_dict[self.code]
         else:
             self.symbol = re.sub(r'[^$£¥€₩]', '', amount)
@@ -37,18 +37,18 @@ class Currency:
 
     # equals method
     def __eq__(self, other):
-        return self.symbol == other.symbol and self.val == other.val
+        return self.code == other.code and self.val == other.val
 
     # add b to self
     def __add__(self, b):
         if isinstance(b, Currency) and self.symbol == b.symbol:
             self.val += b.val
-            return "{s}{v:.2f}".format(s=self.symbol, v=self.val)
+            return self.val, self.code
         else:
             raise InvalidInputError
 
     # subtract b from self
-    def subtract(self, b):
+    def sub(self, b):
         if self.symbol != b.symbol:
             raise DifferentCurrencyCodeError
         if isinstance(b, Currency):
@@ -61,7 +61,7 @@ class Currency:
             raise InvalidInputError
 
     # multiply self by num
-    def multiply(self, num):
+    def mult(self, num):
         if type(num) == int or type(num) == float:
             self.val *= num
             return "{s}{v:.2f}".format(s=self.symbol,  v=self.val)
