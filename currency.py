@@ -48,7 +48,7 @@ class Currency:
             raise InvalidInputError
 
     # subtract b from self
-    def sub(self, b):
+    def __sub__(self, b):
         if self.symbol != b.symbol:
             raise DifferentCurrencyCodeError
         if isinstance(b, Currency):
@@ -61,7 +61,7 @@ class Currency:
             raise InvalidInputError
 
     # multiply self by num
-    def mult(self, num):
+    def __mult__(self, num):
         if type(num) == int or type(num) == float:
             self.val *= num
             return "{s}{v:.2f}".format(s=self.symbol,  v=self.val)
