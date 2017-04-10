@@ -37,7 +37,6 @@ class CurrencyConverter:
             if currency_obj.code == curr_code:
                 return currency_obj
             else:
-                if not self.rate_dict[curr_code] < 1:
-                    return currency.Currency(str(currency_obj.val * self.rate_dict[curr_code]), curr_code)
-                else:
-                    return currency.Currency(str(currency_obj.val /  self.rate_dict[curr_code]), curr_code)
+                converstion_rate = # something
+                return currency.Currency(str(currency_obj.val * (self.rate_dict[curr_code] / self.rate_dict[currency_obj
+                .code]), curr_code))

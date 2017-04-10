@@ -61,7 +61,7 @@ class Currency:
             raise InvalidInputError
 
     # multiply self by num
-    def __mult__(self, num):
+    def __mul__(self, num):
         if type(num) == int or type(num) == float:
             self.val *= num
             return "{s}{v:.2f}".format(s=self.symbol,  v=self.val)
