@@ -15,13 +15,13 @@ class TestCurrencyCode(unittest.TestCase):
         self.test_d = Currency("¥2500")
 
     def test_currency_str_method(self):
-        self.assertEqual(self.test_a.__str__(), "4.50, USD")
+        self.assertEqual(str(self.test_a), "4.50, USD")
 
     def test_currency_eq(self):
         self.assertTrue(self.test_a.__eq__(self.test_1a))
 
     def test_currency_not_eq(self):
-        self.assertFalse(self.test_a.__eq__(self.test_c))
+        self.assertFalse(self.test_a == self.test_c)
 
     def test_valid_input_add(self):
         self.assertEqual(self.test_a.__add__(self.test_b), "$5.25")
@@ -31,7 +31,7 @@ class TestCurrencyCode(unittest.TestCase):
             self.test_a.__add__(self.test_c)
 
     def test_valid_input_subtract(self):
-        self.assertEqual(self.test_a.__sub__(self.test_b), "$3.75")
+        self.assertEqual(self.test_a - self.test_b, "$3.75")
 
     def test_invalid_input_sub(self):
         with self.assertRaises(DifferentCurrencyCodeError):
