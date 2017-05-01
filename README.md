@@ -59,6 +59,3 @@ CURRENCYCONVERTER OBJECTS
 ### Notes
 
 - All tests passing except for one in currency_converter_test,
-
-- Getting correct output but different memory addresses, trying to test convert function
-with a divisor less than one.
